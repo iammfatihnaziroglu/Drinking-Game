@@ -682,6 +682,25 @@ function preciseTimeout(callback, delay) {
 
 // Event listener'ları
 elements.startButton.addEventListener('click', startGame);
+
+// Prevent double taps on touch devices
+let touchTimeout = null;
+elements.startButton.addEventListener('touchstart', function(e) {
+    e.preventDefault(); // Prevent default behavior
+    
+    // Prevent rapid double taps
+    if (touchTimeout !== null) {
+        clearTimeout(touchTimeout);
+    } else {
+        startGame();
+    }
+    
+    touchTimeout = setTimeout(() => {
+        touchTimeout = null;
+    }, 300);
+    
+}, { passive: false });
+
 elements.gameArea.addEventListener('touchstart', handleTouch, { passive: false });
 elements.gameArea.addEventListener('touchmove', e => e.preventDefault(), { passive: false });
 

@@ -350,6 +350,9 @@ body {
     outline: none;
     animation: buttonPulse 2s steps(5) infinite;
     opacity: 1;
+    touch-action: manipulation;
+    -webkit-user-select: none;
+    user-select: none;
 }
 
 @keyframes buttonPulse {
@@ -363,8 +366,8 @@ body {
     box-shadow: 0 0 15px var(--neon-green), 0 0 30px var(--neon-green);
 }
 
-.game-button:active {
-    transform: translate(-50%, -50%) scale(0.95);
+.game-button:active, .game-button:focus {
+    transform: translate(-50%, -50%) scale(0.9);
     background-color: rgba(0, 255, 102, 0.3);
 }
 
