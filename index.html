@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Refleks Kapmaca</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="game-area">
+            <div id="player1-area" class="player-area">
+                <div class="player-score">
+                    <span>Oyuncu 1:</span>
+                    <span id="player1-score">0</span>
+                    <span id="player1-stars" class="stars"></span>
+                </div>
+            </div>
+            <div id="player2-area" class="player-area">
+                <div class="player-score">
+                    <span>Oyuncu 2:</span>
+                    <span id="player2-score">0</span>
+                    <span id="player2-stars" class="stars"></span>
+                </div>
+            </div>
+            <div id="message-display"></div>
+            <div id="timer">30</div>
+            <div id="mode-indicator">Karanlık Mod</div>
+            <button id="start-game" class="game-button start-icon">▶</button>
+        </div>
+        <div id="game-controls">
+            <div id="round-info">Tur: <span id="current-round">0</span>/<span id="total-rounds">10</span></div>
+        </div>
+    </div>
+    <div class="mode-transition"></div>
+    <script src="game.js"></script>
+</body>
+</html> 
