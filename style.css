@@ -94,6 +94,7 @@ body {
     box-shadow: 0 0 10px var(--shadow-color), 0 0 20px var(--shadow-color);
     background-color: var(--bg-darker);
     image-rendering: pixelated;
+    overflow: hidden;
 }
 
 #game-area {
@@ -235,13 +236,18 @@ body {
     100% { opacity: 0.7; }
 }
 
-.target {
+/* Target and trap base responsive styles */
+.target, .trap {
     position: absolute;
     border-radius: 0; /* Square for pixel look */
     transform: scale(1);
     cursor: pointer;
     z-index: 5;
     transition: all 0.1s steps(2);
+    touch-action: manipulation;
+}
+
+.target {
     box-shadow: 0 0 20px currentColor;
     animation: targetAppear 0.3s steps(3) forwards;
 }
@@ -514,7 +520,7 @@ body {
     100% { clip: rect(93px, 9999px, 7px, 0); }
 }
 
-/* Mobile compatibility */
+/* Mobile compatibility - Enhanced */
 @media (max-width: 768px) {
     .player-score {
         font-size: 12px;
@@ -573,6 +579,64 @@ body {
         font-size: 12px;
         padding: 8px 12px;
     }
+    
+    .target {
+        min-width: 50px;
+        min-height: 50px;
+    }
+    
+    .trap {
+        min-width: 40px;
+        min-height: 40px;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .player-score {
+        font-size: 10px;
+        padding: 10px 8px;
+        min-width: 100px;
+        gap: 6px;
+    }
+    
+    #player1-area .player-score {
+        left: 5px;
+    }
+    
+    #player2-area .player-score {
+        right: 5px;
+    }
+    
+    #timer {
+        font-size: 20px;
+        padding: 8px;
+        min-width: 90px;
+    }
+    
+    .game-button {
+        width: 50px;
+        height: 50px;
+        font-size: 20px;
+    }
+    
+    .target {
+        min-width: 40px;
+        min-height: 40px;
+    }
+    
+    .trap {
+        min-width: 35px;
+        min-height: 35px;
+    }
+    
+    #game-controls {
+        height: 50px;
+    }
+    
+    #message-display.countdown {
+        font-size: 36px;
+    }
 }
 
 /* Landscape orientation */
@@ -596,6 +660,41 @@ body {
     
     #player2-area .player-score {
         right: 5px;
+    }
+    
+    #timer {
+        top: 10px;
+        font-size: 20px;
+        padding: 8px;
+    }
+    
+    .target {
+        min-width: 45px;
+        min-height: 45px;
+    }
+    
+    .trap {
+        min-width: 38px;
+        min-height: 38px;
+    }
+}
+
+/* Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .game-button {
+        width: 70px;
+        height: 70px;
+        font-size: 28px;
+    }
+    
+    .target {
+        min-width: 55px;
+        min-height: 55px;
+    }
+    
+    .trap {
+        min-width: 45px;
+        min-height: 45px;
     }
 }
 

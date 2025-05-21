@@ -223,9 +223,24 @@ function showTarget() {
 function createTargetForPlayer(player) {
     const playerArea = document.getElementById(`player${player}-area`);
     const areaRect = playerArea.getBoundingClientRect();
-    const targetSize = Math.random() * 
-        (gameConfig.targetSize.max - gameConfig.targetSize.min) + 
-        gameConfig.targetSize.min;
+    
+    // Ekran boyutuna göre hedef boyutunu ayarla
+    let minSize, maxSize;
+    if (window.innerWidth <= 480) {
+        // Küçük telefonlar
+        minSize = 40;
+        maxSize = 60;
+    } else if (window.innerWidth <= 768) {
+        // Tablet/büyük telefonlar
+        minSize = 50;
+        maxSize = 70;
+    } else {
+        // Masaüstü/büyük ekran
+        minSize = gameConfig.targetSize.min;
+        maxSize = gameConfig.targetSize.max;
+    }
+    
+    const targetSize = Math.random() * (maxSize - minSize) + minSize;
     
     // Yeni hedef elementi oluştur
     const target = document.createElement('div');
@@ -233,7 +248,7 @@ function createTargetForPlayer(player) {
     target.id = `target-player${player}`;
     
     // Define safe zones to prevent targets from appearing behind score displays
-    const safeMargin = 100; // Safe margin from the sides with score displays
+    const safeMargin = window.innerWidth <= 480 ? 60 : 100; // Küçük ekranlarda daha küçük margin
     
     // Calculate available area for target (excluding the score display areas)
     let targetX;
@@ -268,9 +283,24 @@ function createTargetForPlayer(player) {
 function createTrapForPlayer(player) {
     const playerArea = document.getElementById(`player${player}-area`);
     const areaRect = playerArea.getBoundingClientRect();
-    const trapSize = Math.random() * 
-        (gameConfig.trapSize.max - gameConfig.trapSize.min) + 
-        gameConfig.trapSize.min;
+    
+    // Ekran boyutuna göre tuzak boyutunu ayarla
+    let minSize, maxSize;
+    if (window.innerWidth <= 480) {
+        // Küçük telefonlar
+        minSize = 35;
+        maxSize = 50;
+    } else if (window.innerWidth <= 768) {
+        // Tablet/büyük telefonlar
+        minSize = 40;
+        maxSize = 60;
+    } else {
+        // Masaüstü/büyük ekran
+        minSize = gameConfig.trapSize.min;
+        maxSize = gameConfig.trapSize.max;
+    }
+    
+    const trapSize = Math.random() * (maxSize - minSize) + minSize;
     
     // Yeni tuzak elementi oluştur
     const trap = document.createElement('div');
@@ -278,7 +308,7 @@ function createTrapForPlayer(player) {
     trap.id = `trap-player${player}`;
     
     // Define safe zones to prevent traps from appearing behind score displays
-    const safeMargin = 100; // Safe margin from the sides with score displays
+    const safeMargin = window.innerWidth <= 480 ? 60 : 100; // Küçük ekranlarda daha küçük margin
     
     // Calculate available area for trap (excluding the score display areas)
     let trapX;
